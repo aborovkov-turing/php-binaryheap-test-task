@@ -7,6 +7,9 @@ class MedianHeap
     private $lower;
     private $greater;
 
+    private $lcounter;
+    private $gcounter;
+
     /**
      * Fills MediaHeap with given data.
      *
@@ -31,6 +34,9 @@ class MedianHeap
     {
         $this->greater = new \SplMinHeap();
         $this->lower = new \SplMaxHeap();
+
+        $this->lcounter = 0;
+        $this->gcounter = 0;
     }
 
     /**
@@ -40,7 +46,7 @@ class MedianHeap
      */
     public function count(): int
     {
-        return $this->greater->count() + $this->lower->count();
+        return $this->lcounter + $this->gcounter;
     }
 
     /**
@@ -50,7 +56,7 @@ class MedianHeap
      */
     public function isEmpty(): bool
     {
-        return $this->lower->isEmpty() && $this->greater->isEmpty();
+        return $this->lcounter == 0 && $this->gcounter == 0;
     }
 
     /**
@@ -63,13 +69,19 @@ class MedianHeap
         if ($this->isEmpty()) {
 
             $this->lower->insert($value);
+            $this->lcounter++;
 
         }  else {
 
-            if ($value > $this->median()) $this->greater->insert($value);
-            else $this->lower->insert($value);
+            if ($value > $this->median()) {
+                $this->greater->insert($value);
+                $this->gcounter++;
+            } else {
+                $this->lower->insert($value);
+                $this->lcounter++;
+            }
 
-            if (abs($this->lower->count() - $this->greater->count()) > 1)
+            if (abs($this->lcounter - $this->gcounter) > 1)
                 $this->balance();
 
         }
@@ -78,11 +90,23 @@ class MedianHeap
 
     private function balance(): void
     {
-        $lsize = $this->lower->count();
-        $rsize = $this->greater->count();
+        $lsize = $this->lcounter;
+        $rsize = $this->gcounter;
 
-        if ($lsize > $rsize) $this->greater->insert($this->lower->extract());
-        else $this->lower->insert($this->greater->extract());
+        if ($lsize > $rsize) {
+
+            $this->greater->insert($this->lower->extract());
+
+            $this->gcounter++;
+            $this->lcounter--;
+
+        } else {
+            $this->lower->insert($this->greater->extract());
+
+            $this->lcounter++;
+            $this->gcounter--;
+
+        }
     }
 
     /**
@@ -95,8 +119,8 @@ class MedianHeap
         if ($this->isEmpty()) return null;
         if ($this->greater->isEmpty()) return $this->lower->top();
 
-        $lsize = $this->lower->count();
-        $gsize = $this->greater->count();
+        $lsize = $this->lcounter;
+        $gsize = $this->gcounter;
 
         if ($lsize == $gsize) return ($this->lower->top() + $this->greater->top()) / 2;
         elseif ($lsize > $gsize) return $this->lower->top();
