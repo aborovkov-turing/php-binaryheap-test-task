@@ -71,6 +71,7 @@ class MedianHeap
     public function median(): ?float
     {
         if($this->isEmpty()) return null;
+        if($this->greater->isEmpty()) return $this->lower->top();
     }
 
 

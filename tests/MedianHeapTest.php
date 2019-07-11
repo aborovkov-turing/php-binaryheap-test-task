@@ -46,4 +46,9 @@ class MedianHeapTest extends TestCase
         $this->assertNull((MedianHeap::build([]))->median());
     }
 
+    public function testOneElementArrayReturnSelfValue()
+    {
+        $this->assertEquals(1, (MedianHeap::build([1]))->median());
+    }
+
 }
