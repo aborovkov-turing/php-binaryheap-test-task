@@ -18,20 +18,21 @@ class ArrayMedianTest extends TestCase
     {
         $this->assertNull(array_median([]));
     }
-/*
+
     public function testOneElementArrayReturnSelfValue()
     {
-
+        $this->assertEquals(1, array_median([1]));
     }
 
-    public function testTwoElementArrayReturnsAvgValue()
-    {
+    /*
+        public function testTwoElementArrayReturnsAvgValue()
+        {
 
-    }
+        }
 
-    public function testFiveElementSortedArrayReturnsCenterValue()
-    {
+        public function testFiveElementSortedArrayReturnsCenterValue()
+        {
 
-    }*/
+        }*/
 
 }
