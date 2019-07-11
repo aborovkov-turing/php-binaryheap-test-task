@@ -68,9 +68,9 @@ class MedianHeap
      *
      * @return float
      */
-    public function median(): float
+    public function median(): ?float
     {
-
+        if($this->isEmpty()) return null;
     }
 
 

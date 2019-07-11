@@ -35,4 +35,15 @@ class MedianHeapTest extends TestCase
     {
         $this->assertEquals(1, (MedianHeap::build([1]))->count());
     }
+
+    public function testTwoElementsHeapReturnsCountTwo()
+    {
+        $this->assertEquals(2, (MedianHeap::build([1,1]))->count());
+    }
+
+    public function testEmptyArrayReturnsNull()
+    {
+        $this->assertNull((MedianHeap::build([]))->median());
+    }
+
 }
