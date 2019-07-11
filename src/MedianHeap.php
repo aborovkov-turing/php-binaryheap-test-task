@@ -60,25 +60,40 @@ class MedianHeap
      */
     public function insert(int $value): void
     {
-        if($this->isEmpty()) {
+        if ($this->isEmpty()) {
 
             $this->lower->insert($value);
 
-        } elseif($this->greater->isEmpty()) {
+        } elseif ($this->greater->isEmpty()) {
 
             $this->greater->insert($value);
             $this->swap();
 
         } else {
 
+            if ($value > $this->median()) $this->greater->insert($value);
+            else $this->lower->insert($value);
+
+            if (abs($this->lower->count() - $this->greater->count()) > 1)
+                $this->balance();
+
         }
 
     }
 
-    private function swap()
+    private function swap(): void
     {
-        if($this->lower->top() > $this->greater->top())
+        if ($this->lower->top() > $this->greater->top())
             [$this->lower, $this->greater] = [$this->greater, $this->lower];
+    }
+
+    private function balance(): void
+    {
+        $lsize = $this->lower->count();
+        $rsize = $this->greater->count();
+
+        if ($lsize > $rsize) $this->greater->insert($this->lower->extract());
+        else $this->lower->insert($this->greater->extract());
     }
 
     /**
@@ -88,15 +103,14 @@ class MedianHeap
      */
     public function median(): ?float
     {
-        if($this->isEmpty()) return null;
-        if($this->greater->isEmpty()) return $this->lower->top();
+        if ($this->isEmpty()) return null;
+        if ($this->greater->isEmpty()) return $this->lower->top();
 
         $lsize = $this->lower->count();
         $gsize = $this->greater->count();
 
-        if($lsize == $gsize) return ($this->lower->top() + $this->greater->top()) / 2;
-
+        if ($lsize == $gsize) return ($this->lower->top() + $this->greater->top()) / 2;
+        elseif ($lsize > $gsize) return $this->lower->top();
+        else return $this->greater->top();
     }
-
-
 }

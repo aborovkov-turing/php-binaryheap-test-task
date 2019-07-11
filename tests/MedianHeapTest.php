@@ -56,5 +56,27 @@ class MedianHeapTest extends TestCase
         $this->assertEquals(1.5, (MedianHeap::build([1,2]))->median());
     }
 
+    public function testThreeElementArrayReturnsCenterValue()
+    {
+        $this->assertEquals(2, (MedianHeap::build([1,2,3]))->median());
+    }
 
+    public function testFiveElementSortedArrayReturnsCenterValue()
+    {
+        $this->assertEquals(3, (MedianHeap::build([1,2,3,4,5]))->median());
+    }
+
+    public function testTwoZeroArrayReturnZeroAsMedian()
+    {
+        $this->assertEquals(0,(MedianHeap::build([0,0]))->median());
+    }
+
+    public function testFiveShuffledElemReturnsThree()
+    {
+        $input = [1,2,3,4,5];
+        shuffle($input);
+
+        $this->assertEquals(3, (MedianHeap::build($input))->median());
+    }
+    
 }
