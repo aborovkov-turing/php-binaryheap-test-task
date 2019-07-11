@@ -24,15 +24,14 @@ class ArrayMedianTest extends TestCase
         $this->assertEquals(1, array_median([1]));
     }
 
-    /*
-        public function testTwoElementArrayReturnsAvgValue()
-        {
+    public function testTwoElementArrayReturnsAvgValue()
+    {
+        $this->assertEquals(1.5, array_median([1, 2]));
+    }
 
-        }
-
-        public function testFiveElementSortedArrayReturnsCenterValue()
-        {
-
-        }*/
+    public function testFiveElementSortedArrayReturnsCenterValue()
+    {
+        
+    }
 
 }
