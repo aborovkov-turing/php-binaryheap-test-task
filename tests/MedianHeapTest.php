@@ -51,4 +51,10 @@ class MedianHeapTest extends TestCase
         $this->assertEquals(1, (MedianHeap::build([1]))->median());
     }
 
+    public function testTwoElementArrayReturnsAvgValue()
+    {
+        $this->assertEquals(1.5, (MedianHeap::build([1,2]))->median());
+    }
+
+
 }

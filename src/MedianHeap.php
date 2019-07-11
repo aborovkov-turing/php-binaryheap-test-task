@@ -60,7 +60,25 @@ class MedianHeap
      */
     public function insert(int $value): void
     {
-        $this->lower->insert($value);
+        if($this->isEmpty()) {
+
+            $this->lower->insert($value);
+
+        } elseif($this->greater->isEmpty()) {
+
+            $this->greater->insert($value);
+            $this->swap();
+
+        } else {
+
+        }
+
+    }
+
+    private function swap()
+    {
+        if($this->lower->top() > $this->greater->top())
+            [$this->lower, $this->greater] = [$this->greater, $this->lower];
     }
 
     /**
@@ -72,6 +90,12 @@ class MedianHeap
     {
         if($this->isEmpty()) return null;
         if($this->greater->isEmpty()) return $this->lower->top();
+
+        $lsize = $this->lower->count();
+        $gsize = $this->greater->count();
+
+        if($lsize == $gsize) return ($this->lower->top() + $this->greater->top()) / 2;
+
     }
 
 
