@@ -34,4 +34,8 @@ class ArrayMedianTest extends TestCase
         $this->assertEquals(3, array_median([1,2,3,4,5]));
     }
 
+    public function testTwoZeroArrayReturnZeroAsMedian()
+    {
+        $this->assertEquals(0, array_median([0,0]));
+    }
 }
