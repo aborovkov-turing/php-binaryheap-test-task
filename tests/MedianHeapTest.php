@@ -30,4 +30,9 @@ class MedianHeapTest extends TestCase
     {
         $this->assertEquals(0, (MedianHeap::build())->count());
     }
+
+    public function testSingleElementHeapCountEqualsOne()
+    {
+        $this->assertEquals(1, (MedianHeap::build([1]))->count());
+    }
 }
