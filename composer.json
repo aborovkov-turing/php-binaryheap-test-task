@@ -1,0 +1,28 @@
+{
+    "name": "aborovkov/median_heap",
+    "description": "MedianHeap different implementations perfomance investigation",
+    "type": "project",
+    "require": {
+
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Borokvov",
+            "email": "lucky.aaz@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Median\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Median\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
