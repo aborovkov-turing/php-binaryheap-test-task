@@ -31,7 +31,7 @@ class ArrayMedianTest extends TestCase
 
     public function testFiveElementSortedArrayReturnsCenterValue()
     {
-        
+        $this->assertEquals(3, array_median([1,2,3,4,5]));
     }
 
 }
