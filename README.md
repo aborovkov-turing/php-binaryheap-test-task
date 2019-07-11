@@ -25,3 +25,13 @@ And full performance for n elems will be O(n (2logn)) -> O(nlogn). `In theory!!`
 But after benchmarking I've realised that my code is dramatically slower than built in sort implementation.
 Which is explainable, guys who are writing PHP rocks.
  
+ 
+## Running
+
+> php composer.phar install
+
+> php vendor/bin/phpunit
+
+> php phpbench run --report=default
+
+
