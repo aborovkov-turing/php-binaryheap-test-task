@@ -6,7 +6,7 @@
  * Time: 14:55
  */
 
-//declare(strict_types=1);
+declare(strict_types=1);
 
 namespace Median\Tests;
 
@@ -16,9 +16,9 @@ class ArrayMedianTest extends TestCase
 {
     public function testEmptyArrayReturnsNull()
     {
-
+        $this->assertNull(array_median([]));
     }
-
+/*
     public function testOneElementArrayReturnSelfValue()
     {
 
@@ -32,6 +32,6 @@ class ArrayMedianTest extends TestCase
     public function testFiveElementSortedArrayReturnsCenterValue()
     {
 
-    }
+    }*/
 
 }

@@ -12,7 +12,12 @@
             "email": "lucky.aaz@gmail.com"
         }
     ],
+
+
     "autoload": {
+        "files": [
+            "src/array_median.php"
+        ],
         "psr-4": {
             "Median\\": "src/"
         }
