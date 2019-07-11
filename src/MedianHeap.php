@@ -64,12 +64,7 @@ class MedianHeap
 
             $this->lower->insert($value);
 
-        } elseif ($this->greater->isEmpty()) {
-
-            $this->greater->insert($value);
-            $this->swap();
-
-        } else {
+        }  else {
 
             if ($value > $this->median()) $this->greater->insert($value);
             else $this->lower->insert($value);
@@ -79,12 +74,6 @@ class MedianHeap
 
         }
 
-    }
-
-    private function swap(): void
-    {
-        if ($this->lower->top() > $this->greater->top())
-            [$this->lower, $this->greater] = [$this->greater, $this->lower];
     }
 
     private function balance(): void

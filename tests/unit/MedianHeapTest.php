@@ -78,5 +78,11 @@ class MedianHeapTest extends TestCase
 
         $this->assertEquals(3, (MedianHeap::build($input))->median());
     }
-    
+
+    public function test99ShuffeledReturns50()
+    {
+        $input = range(1, 99);
+        shuffle($input);
+        $this->assertEquals(50, (MedianHeap::build($input))->median());
+    }
 }
