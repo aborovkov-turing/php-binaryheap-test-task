@@ -23,14 +23,14 @@ class AllEqualsExceptOneShuffledCase extends BaseCase
     }
 
     /**
-     * @\PhpBench\Benchmark\Metadata\Annotations\Revs(1)
+     * @\PhpBench\Benchmark\Metadata\Annotations\Revs(10)
      */
     public function benchQuickSort()
     {
         array_median($this->data);
     }
     /**
-     * @\PhpBench\Benchmark\Metadata\Annotations\Revs(1)
+     * @\PhpBench\Benchmark\Metadata\Annotations\Revs(10)
      */
     public function benchHeap()
     {
