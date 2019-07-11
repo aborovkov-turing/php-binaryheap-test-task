@@ -38,4 +38,13 @@ class ArrayMedianTest extends TestCase
     {
         $this->assertEquals(0, array_median([0,0]));
     }
+
+    public function testFiveShuffledElemReturnsThree()
+    {
+        $input = [1,2,3,4,5];
+        shuffle($input);
+
+        $this->assertEquals(3, array_median($input));
+
+    }
 }
