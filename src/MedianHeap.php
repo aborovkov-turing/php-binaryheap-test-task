@@ -24,27 +24,50 @@ class MedianHeap
         return $heap;
     }
 
+    /**
+     * MedianHeap constructor.
+     */
     public function __construct()
     {
         $this->greater = new \SplMinHeap();
         $this->lower = new \SplMaxHeap();
     }
 
+    /**
+     * Total items in heap
+     *
+     * @return int
+     */
     public function count(): int
     {
         return $this->greater->count() + $this->lower->count();
     }
 
+    /**
+     * Checkes whether heap is empty
+     *
+     * @return bool
+     */
     public function isEmpty(): bool
     {
         return $this->lower->isEmpty() && $this->greater->isEmpty();
     }
 
-    public function insert(int $value)
+    /**
+     * Inserts value in heap
+     *
+     * @param int $value
+     */
+    public function insert(int $value): void
     {
         $this->lower->insert($value);
     }
 
+    /**
+     * Returns median value
+     *
+     * @return float
+     */
     public function median(): float
     {
 
