@@ -8,5 +8,5 @@
 
 abstract class BaseCase
 {
-    protected $items = 1000000;
+    protected $items = 10000;
 }
