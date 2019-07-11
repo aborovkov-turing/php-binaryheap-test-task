@@ -32,7 +32,7 @@ class MedianHeap
 
     public function count(): int
     {
-
+        return $this->greater->count() + $this->lower->count();
     }
 
     public function isEmpty(): bool
@@ -42,7 +42,7 @@ class MedianHeap
 
     public function insert(int $value)
     {
-
+        $this->lower->insert($value);
     }
 
     public function median(): float

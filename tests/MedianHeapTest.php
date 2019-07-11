@@ -15,8 +15,19 @@ use PHPUnit\Framework\TestCase;
 
 class MedianHeapTest extends TestCase
 {
+
     public function testEmptyBuildCreatesEmptyHeap()
     {
         $this->assertTrue((MedianHeap::build())->isEmpty());
+    }
+
+    public function testSingleElementBuildCreatesNonEmptyHeap()
+    {
+        $this->assertFalse((MedianHeap::build([1]))->isEmpty());
+    }
+
+    public function testEmptyHeapCountEqualsZero()
+    {
+        $this->assertEquals(0, (MedianHeap::build())->count());
     }
 }
